@@ -13,6 +13,5 @@ benjaminrh:jquery-cookie
 cfs:standard-packages
 cfs:gridfs
 cfs:ui
-natestrauser:animate-css
 summernote:summernote
 meteor-platform

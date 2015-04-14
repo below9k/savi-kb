@@ -1,5 +1,5 @@
 {
-  "public": {
-
-  }
+    "public": {
+        "sharedAuthDomains": ["http://ikb.l2share.net:8080", "http://meteor.l2share.net:3000"]
+    }
 }
