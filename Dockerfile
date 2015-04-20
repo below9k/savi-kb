@@ -9,19 +9,19 @@ RUN        apt-get update -y && \
 RUN        apt-get update -y # Change this string to rerun update: 1
 
 # Add the meteor bundle and install npm dependencies
-ADD        build/bundle/ /opt/savi-web/
-RUN        cd /opt/savi-web/programs/server && \
+ADD        build/bundle/ /opt/savi-kb/
+RUN        cd /opt/savi-kb/programs/server && \
            npm install
 
 # Setup the environment
 ENV        PORT 80
 ENV        ROOT_URL http://127.0.0.1
-ENV        MONGO_URL mongodb://mongo:27017/savi-web
+ENV        MONGO_URL mongodb://mongo:27017/savi-kb
 ENV        MONGO_OPLOG_URL mongodb://mongo:27017/local
 
 # Expose the web port and set the folder/command to run
 EXPOSE     80
-WORKDIR    /opt/savi-web
+WORKDIR    /opt/savi-kb
 ENTRYPOINT ["node"]
 CMD        ["main.js"]
 
