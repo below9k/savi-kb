@@ -1,0 +1,23 @@
+<template name="uploads">
+<div class="lightbox">
+	<div id="uploads" class="uploads no_print">
+		<div class="fileDropZone">
+			<input type="file" class="fileGo" multiple>
+		</div>
+		<span class="dropZoneText">Click/Drop Files Here to Upload</span>
+		<div class="row">
+		{{#each getFiles}}
+			<div class="col-xs-12 col-s-6 col-m-4 col-lg-3">
+				<div class="uploaded-item">
+				{{#unless this.isUploaded}}
+					{{> FS.UploadProgressBar bootstrap=true}}
+				{{else}}
+					{{> uploadFiles}}
+				{{/unless}}
+				</div>
+			</div>
+		{{/each}}
+		</div>
+	</div>
+</div>
+</template>
