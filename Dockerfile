@@ -24,3 +24,4 @@ EXPOSE     80
 WORKDIR    /opt/savi-web
 ENTRYPOINT ["node"]
 CMD        ["main.js"]
+
