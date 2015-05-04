@@ -22,7 +22,7 @@ a {
 }
 
 input {
-	display: inline-block !important;
+	display: inline-block;
 }
 
 select#statusSelect {

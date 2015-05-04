@@ -1,6 +1,6 @@
 if(Meteor.isServer){
 	Accounts.config({
-		forbidClientAccountCreation : false
+		forbidClientAccountCreation : true
 	});
 	Meteor.publish('files',function(id){
 		if(!id || !this.userId) return [];

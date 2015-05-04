@@ -1,0 +1,1 @@
+MONGO_URL=mongodb://localhost:27017/savi_help MAIL_URL=smtp://AKIAJ7PVSKJWUVB6UFFQ:Apw0PY9G0Sn4pSQdQ4qen%2FeepZhpQXv%2FFxIg0xaeMIk6@email-smtp.us-west-2.amazonaws.com:465 meteor --port 3001
