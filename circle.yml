@@ -1,0 +1,36 @@
+machine:
+  services:
+    - docker
+  node:
+    version: 0.12.2
+  python:
+    version: pypy-2.4.0
+
+dependencies:
+  override:
+    - pip install awscli==1.6.10
+    - curl https://install.meteor.com | /bin/sh
+    - ./circle/pull_dependencies.sh
+    - pushd meteor && meteor build ../build --directory && popd
+    - docker build -t savi/savi-kb .
+
+test:
+  override:
+    - echo "Uncomment the line below to actually test."
+    #- npm test
+
+deployment:
+  release:
+    branch: /release[\.\/_\-\w]+/
+    commands:
+      - ./circle/push_to_aws.sh
+
+  circle:
+    branch: feature/circle
+    commands:
+      - ./circle/push_to_aws.sh
+
+  dev:
+    branch: develop
+    commands:
+      - ./circle/push_to_aws.sh

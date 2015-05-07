@@ -1,0 +1,76 @@
+<template name="edit">
+	<div id="edit" class="edit">
+		<i class="fa fa-times remove_article" data-id="{{this._id.toHexString}}" data-title="{{this.title}}"></i>
+		<h4>Article</h4>
+		<i class="fa fa-3x fa-sort-up section_marker"></i>
+		<div class="block">
+			<input type="hidden" name="article_id" id="article_id" value='{{setArticleId}}'>
+			<div class="form-group">
+				<label for="statusSelect">View</label>
+				<select name="status" id="statusSelect" class="form-control">
+					<option value="3" {{isSelected "3" this.status}}>Incomplete</option>
+			<!--	<option value="0" {{isSelected "0" this.status}}>Hidden/Deleted</option> -->
+					<option value="1" {{isSelected "1" this.status}}>Public</option>
+					<option value="2" {{isSelected "2" this.status}}>Diem User(s)</option>
+					<option value="4" {{isSelected "4" this.status}}>Diem Management</option>
+					<option value="5" {{isSelected "5" this.status}}>Personal Document (Do Not Share)</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="parent">Article Group Name</label>
+				<input name="parent" id="parent" type="text" class="form-control" placeholder="Parent Name" value="{{this.parent.title}}">
+			</div>
+			<!-- Depricated parent_id, just using the name - it unique or its not. Keeping this just cause -->
+			<input type="hidden" id="parent_id" name="parent_id" value="{{this.parent._id}}">
+			{{#if parentSearch}}
+			<div id="parent_search">
+				<ul>
+					{{#each parentSearch}}
+					<li class="parent_select" data-title="{{this.parent.title}}"><p>&middot; {{this.parent.title}}</p></li>
+					{{/each}}
+				</ul>
+			</div>
+			{{/if}}
+			<div class="form-group">
+				<label for="article_title">Article Name</label>
+				<input name="article_title" id="article_title" type="text" class="form-control" placeholder="Article Title" value="{{this.title}}" >
+				<label for="article_sort_number">Group Order Number (Highest first, lowest last)</label>
+				<input name="article_sort_number" id="article_sort_number" type="number" class="form-control" placeholder="Article sort order (1&nbsp;-&nbsp;&infin;)" min="1" value="{{this.parent.group_order}}" >
+			</div>
+		</div>
+		<p><label for="add_prereq"><input name="add_prereq" id="add_prereq" type="checkbox" class="checkbox" checked="{{checkPrereq prereq_enable}}" >Prerequisites?</label></p>
+		<div id="prereq">
+			<h4>Prereqs.</h4>
+			<i class="fa fa-3x fa-sort-up section_marker"></i>
+			<div class="block prereq">
+				{{#each prereq}}
+				{{> prereqEdit}}
+				{{/each}}
+			</div>
+			<div id="prereq_controls" class=""><i id="new" class="fa fa-3x fa-plus-square"></i></div>
+		</div>
+		<h4>Steps</h4>
+		<i class="fa fa-3x fa-sort-up section_marker"></i>
+		<div id="steps" class="steps row block">
+			{{#if steps}}
+			{{#each steps}}
+			{{> stepEdit}}
+			{{/each}}
+			{{else}}
+			{{> stepEdit}}
+			{{/if}}
+		</div>
+		<div class="no-print">
+		{{#if loggedIn}}
+		{{> comments}}
+		{{/if}}	
+		</div>
+		
+		<div id="steps_controls" class="row">
+			<div class="col-md-4 col-xs-4"><i id="openUploads" class="fa fa-4x fa-cloud-upload"></i><p>Uploads</p></div>
+			<div class="col-md-4 col-xs-4"><i id="new" class="fa fa-4x fa-plus-square"></i><p>Add Step</p></div>
+			<div class="col-md-4 col-xs-4"><i id="save" class="fa fa-4x fa-save"></i><p>Save</p></div>
+		</div>
+	</div>
+	{{> uploads}}
+</template>
