@@ -1,0 +1,33 @@
+<template name="stepEdit">
+	<div class="stepBlock">
+		<div class="step">
+			<div class="unsaved_notifier" style="display:none;">
+				<i class="fa fa-save"></i>&nbsp;*Unsaved changes have been made to this field&nbsp;<i class="fa fa-angle-double-down"></i>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<input name="step_title" type="text" class="form-control edit_step_title" placeholder="Step Title" value="{{this.title}}">
+					<div class="editArea step_content form-control">
+						{{{this.text.htmlcode}}}
+					</div>
+					<input name="compare_me" type="hidden" class="compare_me" value="{{this.text.htmlcode}}">
+					<span class="input-group-addon vt">
+						<ul class="step_controls">
+							<li>
+								<i class="fa fa-2x fa-sort-up sortable_handle_move_up"></i>
+								<br>
+								<i class="fa fa-2x fa-reorder sortable_handle"></i>
+								<br>
+							<i class="fa fa-2x fa-sort-down sortable_handle_move_down"></i>
+						</li>
+						<li>
+							<i class="fa fa-2x fa-times remove_step"></i>
+						</li>
+					</ul>
+				</span>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</template>
