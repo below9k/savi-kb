@@ -39,9 +39,10 @@ Router.map(function() {
 		path: '/edit/:_id',
 		template: 'edit',
 		onBeforeAction: function(){
-			if(!Meteor.userId()){
+            var user = roles.findOne(Meteor.userId());
+			if(!user || !user.isAdmin){
 				Router.go('landing');
-				$('.dropdown-toggle').trigger('click');
+				//$('.dropdown-toggle').trigger('click');
 			}
 			$('body,html').scrollTop(0);
 			this.next();

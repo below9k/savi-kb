@@ -1,0 +1,21 @@
+{
+    "launch_path": "/index.html",
+    "installs_allowed_from": [
+        "*"
+    ],
+    "version": "0.0.1",
+    "name": "savi_help",
+    "description": "New Meteor Mobile App",
+    "developer": {
+        "name": "A Meteor Developer",
+        "url": "n/a"
+    },
+    "permissions": {
+        "systemXHR": {}
+    },
+    "type": "privileged",
+    "icons": {
+        "60": "/icon/icon-60.png",
+        "128": "/icon/icon-128.png"
+    }
+}

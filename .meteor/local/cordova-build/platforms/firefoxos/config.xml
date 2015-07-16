@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.id5rwdbe16jk4ai5otped" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <platform name="firefoxos">
+        <icon height="128" src="icon/icon-128.png" width="128" />
+        <icon height="60" src="icon/icon-60.png" width="60" />
+    </platform>
+    <permission name="systemXHR" privileged="true" />
+    <feature name="Device">
+        <param name="firefoxos-package" value="Device" />
+    </feature>
+    <name>savi_help</name>
+    <description>New Meteor Mobile App</description>
+    <author email="n/a" href="n/a">A Meteor Developer</author>
+    <preference name="webviewbounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <content src="index.html" />
+    <access launch-external="true" origin="tel:*" />
+    <access launch-external="true" origin="geo:*" />
+    <access launch-external="true" origin="mailto:*" />
+    <access launch-external="true" origin="sms:*" />
+    <access launch-external="true" origin="market:*" />
+    <access origin="file:*" />
+    <access origin="cdv:*" />
+    <access origin="gap:*" />
+    <access origin="http://meteor.local/*" />
+    <access origin="*://localhost/*" />
+    <access origin="*://10.0.2.2/*" />
+</widget>

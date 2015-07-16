@@ -1,0 +1,2 @@
+)]}'
+{"version":3,"file":"/packages/natestrauser:font-awesome.js","sources":["natestrauser:font-awesome/load.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,oD;;AAEA,sB;AACA,2C;AACA,wB;AACA,yB;AACA,iF;;AAEA,wB","sourcesContent":["var head = document.getElementsByTagName('head')[0];\n\n//Generate a style tag\nvar style = document.createElement('link');\nstyle.type = 'text/css';\nstyle.rel = \"stylesheet\";\nstyle.href = '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css';\n\nhead.appendChild(style);\n"]}

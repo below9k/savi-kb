@@ -26,7 +26,7 @@
   "appName": "savi_help",
 
   // Location of app (local directory)
-  "app": "/home/meteor/savi_help",
+  "app": "/home/meteor/savi_help/meteor",
 
   // Configure environment
   "env": {
