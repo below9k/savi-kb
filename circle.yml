@@ -1,4 +1,6 @@
 machine:
+  environment:
+    KB_RELEASE: v1.0.2
   services:
     - docker
   node:
@@ -8,8 +10,15 @@ machine:
 
 dependencies:
   override:
+    # Install pip modules
     - pip install awscli==1.6.10
+    - pip install crudini==0.7
+    - pip install MarkupSafe
+    - pip install boto
+    - sudo LC_ALL=C pip install ansible
+    # Install meteor
     - curl https://install.meteor.com | /bin/sh
+    # Pull dependencies and build the project
     - ./circle/pull_dependencies.sh
     - pushd meteor && meteor build ../build --directory && popd
     - docker build -t savi/savi-kb .
@@ -24,13 +33,15 @@ deployment:
     branch: /release[\.\/_\-\w]+/
     commands:
       - ./circle/push_to_aws.sh
-
-  circle:
-    branch: feature/circle
-    commands:
-      - ./circle/push_to_aws.sh
+      - LIMIT=tag_Name_savi-web_staging ./circle/update_savi_kb.sh
 
   dev:
     branch: develop
     commands:
       - ./circle/push_to_aws.sh
+      - LIMIT=tag_Name_savi-web_dev ./circle/update_savi_kb.sh
+
+  master:
+    branch: master
+    commands:
+      - LIMIT=tag_Name_savi-web_prod KB_TAG=${KB_RELEASE} ./circle/update_savi_kb.sh
