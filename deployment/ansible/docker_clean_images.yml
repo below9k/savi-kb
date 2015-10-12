@@ -1,0 +1,4 @@
+---
+- hosts: all
+  tasks:
+  - include: tasks/docker_clean_images.yml

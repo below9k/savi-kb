@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - include: tasks/update_savi_kb.yml
+  - include: tasks/docker_clean_images.yml

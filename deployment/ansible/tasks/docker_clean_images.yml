@@ -1,0 +1,3 @@
+- name: Remove old docker images
+  shell: docker images -q --filter dangling=true | xargs --no-run-if-empty docker rmi
+  sudo: yes

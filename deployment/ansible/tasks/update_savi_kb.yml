@@ -1,0 +1,36 @@
+- name: Download the docker image tgz
+  shell: AWS_ACCESS_KEY_ID={{AWS_ACCESS_KEY_ID}} AWS_SECRET_ACCESS_KEY={{AWS_SECRET_ACCESS_KEY}} aws s3 cp s3://savi-docker-images/savi-kb/savi-kb_{{KB_TAG}}.tgz /tmp/savi-kb_{{KB_TAG}}.tgz
+
+- name: Load the docker image
+  shell: gzip -dc /tmp/savi-kb_{{KB_TAG}}.tgz | docker load
+  sudo: yes
+
+- name: Delete the docker image tgz
+  file: path=/tmp/savi-kb_{{KB_TAG}}.tgz state=absent
+
+- name: Stop the service
+  sudo: yes
+  service:
+    name=savi_kb
+    state=stopped
+    enabled=false
+  ignore_errors: true
+
+- name: Remove the existing container
+  shell: docker rm -f -v savi_kb
+  ignore_errors: true
+  sudo: yes
+
+- name: Create the service
+  sudo: yes
+  template:
+    src=savi_kb.conf
+    dest=/etc/init/savi_kb.conf
+    mode=644
+
+- name: Start the service
+  sudo: yes
+  service:
+    name=savi_kb
+    state=restarted
+    enabled=true
