@@ -1,9 +1,8 @@
 Meteor.subscribe('roles');
 
-Template.registerHelper('isAdmin',function(){
+Template.registerHelper('isAdmin', function() {
     var role = roles.findOne(Meteor.userId());
     var access = role ? role.isAdmin : false;
-    console.log(access,role);
     return access;
 });
 

@@ -578,11 +578,11 @@ div[class*="col-"] {
 }
 
 .plus_articles {
-	text-align: right;
+	text-align: center;
 	cursor: pointer;
 	position: relative;
-	right: -12em;
-	margin: 7px;
+	width: 100%;
+	margin: 7px 0;
 	display: inline-block;
 }
 
