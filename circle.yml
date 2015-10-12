@@ -1,6 +1,6 @@
 machine:
   environment:
-    KB_RELEASE: v1.0.1
+    KB_RELEASE: v1.0.2
   services:
     - docker
   node:
