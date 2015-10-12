@@ -33,7 +33,7 @@ deployment:
     branch: /release[\.\/_\-\w]+/
     commands:
       - ./circle/push_to_aws.sh
-      - LIMIT=tag_Name_savi-web_staging ./circle/update_savi_kb.sh
+      # - LIMIT=tag_Name_savi-web_staging ./circle/update_savi_kb.sh
 
   circle:
     branch: feature/circle
@@ -45,4 +45,4 @@ deployment:
     branch: develop
     commands:
       - ./circle/push_to_aws.sh
-      # - LIMIT=tag_Name_savi-web_prod WEB_TAG=${WEB_RELEASE} ./circle/update_savi_kb.sh
+      - LIMIT=tag_Name_savi-web_prod WEB_TAG=${WEB_RELEASE} ./circle/update_savi_kb.sh
